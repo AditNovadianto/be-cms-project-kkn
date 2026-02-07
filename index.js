@@ -5,6 +5,17 @@ import { db } from "./config/db.js";
 import { connectMongoDB } from "./config/db_mongo.js";
 import authRoute from "./routes/authRoute.js";
 import sectionRoute from "./routes/sectionRoute.js";
+import berandaRoute from "./routes/berandaRoute.js";
+import demografiRoute from "./routes/demografiRoute.js";
+import petaWilayahRoute from "./routes/petaWilayahRoute.js";
+import visiMisiRoute from "./routes/visiMisiRoute.js";
+import batasWilayahRoute from "./routes/batasWilayahRoute.js";
+import pemerintahanRoute from "./routes/pemerintahanRoute.js";
+import potensiRoute from "./routes/potensiRoute.js";
+import sejarahRoute from "./routes/sejarahRoute.js";
+import wisataRoute from "./routes/wisataRoute.js";
+import saranaPrasaranaRoute from "./routes/saranaPrasaranaRoute.js";
+import galeriRoute from "./routes/galeriRoute.js";
 
 dotenv.config();
 
@@ -39,6 +50,17 @@ app.get("/", (req, res) => {
 
 app.use(authRoute);
 app.use(sectionRoute);
+app.use(berandaRoute);
+app.use(demografiRoute);
+app.use(petaWilayahRoute);
+app.use(visiMisiRoute);
+app.use(batasWilayahRoute);
+app.use(pemerintahanRoute);
+app.use(potensiRoute);
+app.use(sejarahRoute);
+app.use(wisataRoute);
+app.use(saranaPrasaranaRoute);
+app.use(galeriRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

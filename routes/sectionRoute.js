@@ -1,7 +1,7 @@
 import express from "express";
 import {
   updateSection,
-  uploadImageSection,
+  uploadHeroImageSection,
 } from "../controllers/sectionController.js";
 import multer from "multer";
 import { verifyToken } from "../middleware/auth.js";
@@ -16,12 +16,60 @@ const upload = multer({
   },
 });
 
-router.post("/updateSection/:id_section", verifyToken, updateSection);
+// Beranda
+
+//
+
+// Demografi
+
+//
+
+// Peta Wilayah
+
+//
+
+// Visi dan Misi
+
+//
+
+// Batas Wilayah
+
+//
+
+// Pemerintahan
+
+//
+
+// Potensi
+
+//
+
+// Sejarah
+
+//
+
+// Wisata
+
+//
+
+// Sarana Prasarana
+
+//
+
+// Galeri
+
+//
+
+// for Beranda, Peta Wilayah, Pemerintahan
 router.post(
-  "/uploadImageSection/:id_section",
+  "/uploadHeroImageSection/:id_section",
   verifyToken,
   upload.single("image"),
-  uploadImageSection,
+  uploadHeroImageSection,
 );
+//
+
+// for all sections
+router.post("/updateSection/:id_section", verifyToken, updateSection);
 
 export default router;

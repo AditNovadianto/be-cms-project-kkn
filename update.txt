@@ -1,0 +1,63 @@
+update API Sections:
+- Beranda:
+    - uplaodHeroImageSection (update) ✅
+    - updateSection (update) ✅
+    - getBerandaContents (read) ✅
+
+- Demografi Desa:
+    - updateSection (update) ✅
+    - getDemografiContents (read) ✅
+
+- Peta Wilayah Desa:
+    - uplaodHeroImageSection (update) ✅
+    - updateSection (update) ✅
+    - getPetaWilayahContents (read) ✅
+
+- Visi dan Misi Desa:
+    - updateSection (update) ✅
+    - addMisiDesa (create) ❌
+    - deleteMisiDesa (delete) ❌
+    - getVisiMisiContents (read) ✅
+
+- Batas Wilayah Desa:
+    - updateSection (update) ✅
+    - getBatasWilayahContents (read) ✅
+
+- Pemerintahan Desa:
+    - uplaodHeroImageSection (update) ✅
+    - updateSection (update) ✅
+    - addItem (create) ❌
+    - deleteItem (delete) ❌
+    - getPemerintahanContents (read) ✅
+
+- Potensi Desa:
+    - updateSection (update) ✅
+    - addPotensi (create) ❌
+    - deletePotensi (delete) ❌
+    - getPotensiContents (read) ✅
+
+- Sejarah Desa:
+    - updateSection (update) ✅
+    - addSejarah (create) ❌
+    - deleteSejarah (delete) ❌
+    - getSejarahContents (read) ✅
+
+- Wisata Desa:
+    - updateSection (update) ✅
+    - uploadImageWisataSection (update) ✅
+    - addWisata (create) ❌
+    - deleteWisata (delete) ❌
+    - getWisataContents (read) ✅
+
+- Sarana dan Prasarana Desa:
+    - updateSection (update) ✅
+    - uploadImageSaranaPrasaranaSection (update) ✅
+    - addSaranaPrasarana (create) ❌
+    - deleteSaranaPrasarana (delete) ❌
+    - getSaranaPrasaranaContents (read) ✅
+
+- Galeri Desa:
+    - updateSection (update) ✅
+    - uploadGalleryImageSection (create) ✅
+    - deleteGalleryImageSection (delete) ❌
+    - getGalleryContents (read) ✅
