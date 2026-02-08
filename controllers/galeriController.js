@@ -6,7 +6,7 @@ export const getGalleryContents = async (req, res) => {
 
     return res.status(200).json(result);
   } catch (error) {
-    console.error("getGalleryContents error:", err);
+    console.error("getGalleryContents error:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 };

@@ -6,7 +6,7 @@ export const getVisiMisiContents = async (req, res) => {
 
     return res.status(200).json(result);
   } catch (error) {
-    console.error("getVisiMisiContents error:", err);
+    console.error("getVisiMisiContents error:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 };

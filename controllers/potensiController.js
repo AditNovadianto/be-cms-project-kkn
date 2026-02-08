@@ -6,7 +6,7 @@ export const getPotensiContents = async (req, res) => {
 
     return res.status(200).json(result);
   } catch (error) {
-    console.error("getPotensiContents error:", err);
+    console.error("getPotensiContents error:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 };

@@ -6,7 +6,7 @@ export const getPemerintahanContents = async (req, res) => {
 
     return res.status(200).json(result);
   } catch (error) {
-    console.error("getPemerintahanContents error:", err);
+    console.error("getPemerintahanContents error:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 };

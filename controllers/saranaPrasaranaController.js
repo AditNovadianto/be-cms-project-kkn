@@ -6,7 +6,7 @@ export const getSaranaPrasaranaContents = async (req, res) => {
 
     return res.status(200).json(result);
   } catch (error) {
-    console.error("getSaranaPrasaranaContents error:", err);
+    console.error("getSaranaPrasaranaContents error:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 };
