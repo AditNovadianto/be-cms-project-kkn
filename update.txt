@@ -42,12 +42,10 @@ update API Sections:
 - Sarana dan Prasarana Desa:
     - updateSection (update) ✅
     - uploadImageSaranaPrasaranaSection (update) ✅
-    - addSaranaPrasarana (create) ❌
-    - deleteSaranaPrasarana (delete) ❌
     - getSaranaPrasaranaContents (read) ✅
 
 - Galeri Desa:
     - updateSection (update) ✅
     - uploadGalleryImageSection (create) ✅
-    - deleteGalleryImageSection (delete) ❌
+    - deleteGalleryImageSection (delete) ✅
     - getGalleryContents (read) ✅

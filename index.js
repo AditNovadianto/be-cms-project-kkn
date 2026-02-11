@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { db } from "./config/db.js";
 import { connectMongoDB } from "./config/db_mongo.js";
 import authRoute from "./routes/authRoute.js";
+import roleRoute from "./routes/roleRoute.js";
 import sectionRoute from "./routes/sectionRoute.js";
 import berandaRoute from "./routes/berandaRoute.js";
 import demografiRoute from "./routes/demografiRoute.js";
@@ -61,6 +62,7 @@ app.use(sejarahRoute);
 app.use(wisataRoute);
 app.use(saranaPrasaranaRoute);
 app.use(galeriRoute);
+app.use(roleRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
