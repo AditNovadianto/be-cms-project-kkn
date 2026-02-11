@@ -1,6 +1,7 @@
 import { db } from "../config/db.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { transporter } from "../utils/mailer.js";
 
 const signToken = (user) => {
   if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET is not set");
@@ -111,5 +112,69 @@ export const getAllUsers = async (req, res) => {
   } catch (err) {
     console.error("getAllUsers error:", err);
     return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const forgotPassword = async (req, res) => {
+  const { email_user } = req.body;
+
+  try {
+    const [users] = await db.query("SELECT * FROM users WHERE email_user = ?", [
+      email_user,
+    ]);
+
+    if (users.length === 0) {
+      return res.status(404).json({ message: "Email tidak ditemukan" });
+    }
+
+    const user = users[0];
+
+    // generate token (expire 15 menit)
+    const token = jwt.sign({ id_user: user.id_user }, process.env.JWT_SECRET, {
+      expiresIn: "15m",
+    });
+
+    const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+
+    // kirim email
+    await transporter.sendMail({
+      from: `"CMS Allakuang" <${process.env.EMAIL_USER}>`,
+      to: email_user,
+      subject: "Reset Password",
+      html: `
+        <p>Halo ${user.nama_user},</p>
+        <p>Klik link di bawah untuk reset password:</p>
+        <a href="${resetLink}">${resetLink}</a>
+        <p>Link ini berlaku 15 menit.</p>
+      `,
+    });
+
+    res.json({ message: "Link reset berhasil dikirim" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  const { token } = req.params;
+  const { newPassword } = req.body;
+
+  try {
+    // verifikasi token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    // update password di database
+    await db.query("UPDATE users SET password_user = ? WHERE id_user = ?", [
+      hashedPassword,
+      decoded.id_user,
+    ]);
+
+    res.json({ message: "Password berhasil direset" });
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: "Token tidak valid atau expired" });
   }
 };
