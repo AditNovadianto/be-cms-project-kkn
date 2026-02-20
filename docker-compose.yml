@@ -2,11 +2,15 @@ services:
   backend:
     build: .
     container_name: be-cms-project-kkn
-    ports:
-      - "3000:3000"
     volumes:
       - .:/app
       - /app/node_modules
     env_file:
       - .env
+    networks:
+      - private-net
     restart: unless-stopped
+
+networks:
+  private-net:
+    external: true
